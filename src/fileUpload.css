@@ -1,0 +1,68 @@
+.div-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .green-div {
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .red-div {
+    background-color: red;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+.dropzone {
+  width: 200px;
+  height: 200px;
+  border: 2px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-bar {
+  width: 70%; /* set the width to 70% */
+  height: 20px; /* set the height */
+  background-color: #f2f2f2; /* set the background color */
+  border: 1px solid gray; /* add a gray border */
+  border-radius: 5px; /* add rounded corners */
+  margin-top: 3%;
+  margin-bottom: 1%;
+  color: white;
+}
+
+.nlp_progress_bar{
+  display: flex;
+  height: 20px;
+  background-color: green;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.results{
+  width:70%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+
+}
+.showResults{
+  display: flex;
+  justify-content: center;
+  width: 70%;
+  margin-top: 3%;
+  padding-top: 1%;
+  border-top: 1px solid gray;
+
+}

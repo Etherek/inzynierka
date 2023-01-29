@@ -1,0 +1,47 @@
+.one {
+    background-color: blue;
+    min-width: 10%
+}
+.two {
+    background-color: royalblue;
+    min-width: 10%
+}
+.three {
+    background-color: aqua;
+    min-width: 10%
+}
+.four {
+    background-color: aquamarine;
+    min-width: 10%
+}
+.five {
+    background-color: yellowgreen;
+    min-width: 10%
+}
+.six {
+    background-color: yellow;
+    min-width: 10%
+
+}
+.seven {
+    background-color: olive;
+    min-width: 10%
+}
+.eight {
+    background-color: orange;
+    min-width: 10%
+}
+.nine {
+    background-color: orangered;
+    min-width: 10%
+}
+.ten {
+    background-color: red;
+    min-width: 10%
+}
+.scores {
+    padding-top: 1%;
+    display: flex;
+    width:40% ;
+    height: 30%;
+}

@@ -1,0 +1,14 @@
+input {
+    display: block;
+    margin: 10px auto;
+    text-align: center;
+    width: 70%;
+  }
+select {
+
+        display: block;
+        margin: 10px auto;
+        text-align: center;
+        width: 80%;
+
+}
