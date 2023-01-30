@@ -1,5 +1,5 @@
 import React from 'react';
-import { library, faFile, faCog, faDownload } from '@fortawesome/free-solid-svg-icons';
+import {faFile, faCog, faDownload } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 

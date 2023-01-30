@@ -1,5 +1,5 @@
 
-import React, { useState, useContext } from 'react';
+import React from 'react';
 import './choices.css'
 
 export const InputContext = React.createContext();

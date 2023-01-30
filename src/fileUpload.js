@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext} from 'react';
+import React, { useState, useEffect} from 'react';
 import './fileUpload.css';
 import { InboxOutlined } from '@ant-design/icons';
 import { message, Upload } from 'antd';
@@ -9,35 +9,26 @@ import Legend from './legend'
 
 
 const { Dragger } = Upload;
-const API_URL = "https://ws.clarin-pl.eu"
 
 
 
 const DropZone = ({inputValues}) => {
   let [fileID, setFileID] = useState('');
-  let [taskID,setTaskID] = useState('');
   let [width,setWidth]=useState(0);
-  let [topic,setTopic]=useState('');
-  let [chmura,setChmura] =useState([])
-  let [rows,setRows] = useState('')
-  let [vertical,setVertical] = useState('')
   let [bigArray,setBigArray] = useState([])
   let [topikiLength,setTopikiLength] = useState(0)
-  let [download,setDownload] = useState('')
   let [images,setImages] = useState([])
   let [arrayDocuments, setArrayDocuments] = useState([])
   let [showLoading, setShowLoading] = useState(false);
   let [showResults, setShowResults] = useState(false);
-  console.log(inputValues)
+  
 
-  const lnk = `https://ws.clarin-pl.eu/show/topic?results=${topic}&amp;lang=pl`
   useEffect(() => {
-  const test = `|any2txt|div(${inputValues.divisionFiles})|wcrft2|fextor2({"features":"base","lang":"pl","filters":{"base":[{"type":"pos_stoplist","args":{"stoplist":["subst"],"excluding":false}}]}})|dir|feature2({"filter":{"base":{"min_df":2,"max_df":1,"keep_n":1000}}})|topic3({"no_topics":${inputValues.numTopics},"no_passes":${inputValues.numIterations},"method":"${inputValues.method}","alpha":-2,"beta":-0.01})`
+  const link = `|any2txt|div(${inputValues.divisionFiles})|wcrft2|fextor2({"features":"base","lang":"pl","filters":{"base":[{"type":"pos_stoplist","args":{"stoplist":["subst"],"excluding":false}}]}})|dir|feature2({"filter":{"base":{"min_df":2,"max_df":1,"keep_n":1000}}})|topic3({"no_topics":${inputValues.numTopics},"no_passes":${inputValues.numIterations},"method":"${inputValues.method}","alpha":-2,"beta":-0.01})`
 
 
   }, [fileID])
 
-  //let response = 0;
   const handleChange = (info) => {
     const { status } = info.file;
     if (status !== 'uploading') {
@@ -47,7 +38,7 @@ const DropZone = ({inputValues}) => {
 
       
       message.success(`${info.file.name} file uploaded successfully.`);
-      let fileResponse = info.file.response //to gówno consolloguje git
+      let fileResponse = info.file.response
       setFileID(fileResponse)
    
 
@@ -71,9 +62,9 @@ const DropZone = ({inputValues}) => {
   
   };
   async function startProcess(){
-    const test = `|any2txt|div(${inputValues.divisionFiles})|wcrft2|fextor2({"features":"base","lang":"pl","filters":{"base":[{"type":"pos_stoplist","args":{"stoplist":["subst"],"excluding":false}}]}})|dir|feature2({"filter":{"base":{"min_df":2,"max_df":1,"keep_n":1000}}})|topic3({"no_topics":${inputValues.numTopics},"no_passes":${inputValues.numIterations},"method":"${inputValues.method}","alpha":-2,"beta":-0.01})`
+    const link = `|any2txt|div(${inputValues.divisionFiles})|wcrft2|fextor2({"features":"base","lang":"pl","filters":{"base":[{"type":"pos_stoplist","args":{"stoplist":["subst"],"excluding":false}}]}})|dir|feature2({"filter":{"base":{"min_df":2,"max_df":1,"keep_n":1000}}})|topic3({"no_topics":${inputValues.numTopics},"no_passes":${inputValues.numIterations},"method":"${inputValues.method}","alpha":-2,"beta":-0.01})`
 
-    const lpmn = "filezip("+fileID+")"+ test;
+    const lpmn = "filezip("+fileID+")"+ link;
   const request = {
       lpmn: lpmn,
       user: "249265@student.pwr.edu.pl",
@@ -83,7 +74,6 @@ const DropZone = ({inputValues}) => {
 
   const taskid = response.data;
 
-  setTaskID(taskid)
   let status = "";
   let jsonres = {};
   while (status !== "DONE") {
@@ -108,7 +98,7 @@ const DropZone = ({inputValues}) => {
 
   }
 
-  setTopic(jsonres[0].fileID)
+
 
   
   if (status === "DONE") {
@@ -118,15 +108,15 @@ const DropZone = ({inputValues}) => {
 
     const documents = odp.data.docs
 
-    setRows(Object.keys(documents).length);
+ 
     const topiki = odp.data.topics
-    setVertical(Object.keys(topiki).length);
+ 
 
     setTopikiLength(Object.keys(topiki).length);
 
     let arrayNames = Object.keys(documents)
     setArrayDocuments(arrayNames);
-    setChmura((topiki));
+
     const mainArray = Object.values(documents);
     const newArray =[];
     for (let i=0; i< mainArray.length;i++){
@@ -141,7 +131,7 @@ const DropZone = ({inputValues}) => {
     const imageUrls =[]
   
     for (let i=0; i<Object.keys(topiki).length;i++){
-      download=(`https://ws.clarin-pl.eu/nlprest2/base/download${jsonres[0].fileID}/${i}.png`)
+      let download=(`https://ws.clarin-pl.eu/nlprest2/base/download${jsonres[0].fileID}/${i}.png`)
       imageUrls.push(download)
 
     }
@@ -149,8 +139,7 @@ const DropZone = ({inputValues}) => {
     setBigArray(newArray)
     setShowResults(true)
   }
- // getTaskResults();
- // downloadResult();
+
   }
 
   
