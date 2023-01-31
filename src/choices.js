@@ -33,8 +33,8 @@ const Choices = ({inputValues,setInputValues}) => {
                 <option value="LDA_mallet">LDA(mallet)</option>
                 </select>
 
-              <strong>Liczba tematów</strong><input type="number" name="numTopics"  value={inputValues.numTopics} onChange={handleChange} placeholder="Wpisz tekst tutaj" />
-              <strong>Liczba iteracji</strong><input type="number" name="numIterations" value={inputValues.numIterations} onChange={handleChange} placeholder="Wpisz tekst tutaj" />
+              <strong>Liczba tematów</strong><input type="number" name="numTopics"  value={inputValues.numTopics} onChange={handleChange} />
+              <strong>Liczba iteracji</strong><input type="number" name="numIterations" value={inputValues.numIterations} onChange={handleChange} />
             </div>
             </div>
           </div>
