@@ -67,7 +67,6 @@ const DropZone = ({inputValues}) => {
     const lpmn = "filezip("+fileID+")"+ link;
   const request = {
       lpmn: lpmn,
-      user: "249265@student.pwr.edu.pl",
   };
   setShowLoading(true)
   const response = await axios.post("https://ws.clarin-pl.eu/nlprest2/base/startTask", request);
